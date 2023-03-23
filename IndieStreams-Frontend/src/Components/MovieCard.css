@@ -1,0 +1,28 @@
+.Card {
+  min-width: 148px;
+  min-height: 196px;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: left;
+  margin: auto 5px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  filter: brightness(0.75);
+  transform-origin: 5% 50%;
+
+  transition: all ease 250ms;
+}
+
+.Card:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  filter: brightness(1);
+  box-shadow: 10px 0px 45px -5px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 10px 0px 45px -11px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 10px 0px 45px -11px rgba(0, 0, 0, 1);
+  z-index: 10;
+}

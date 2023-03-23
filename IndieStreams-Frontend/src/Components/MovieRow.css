@@ -1,0 +1,27 @@
+.heading {
+  font-size: 24px;
+  margin: 0px 0;
+}
+.Row {
+  margin: 8px 0;
+  width: 100%;
+  overflow: visible;
+}
+.Row ul {
+  height: 40vh;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  overflow-y: auto;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.Row ul::-webkit-scrollbar {
+  display: none;
+}

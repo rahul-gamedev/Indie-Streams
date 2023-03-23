@@ -1,0 +1,34 @@
+.Banner {
+  width: auto;
+  height: 75vh;
+  margin: 18px 50px;
+  padding: 30px 75px;
+
+  border-radius: 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: inset 51px 0px 100px 30px rgba(0, 0, 0, 0.6);
+
+  background-size: cover;
+
+  cursor: pointer;
+}
+.content {
+  height: auto;
+  width: 100%;
+  margin: auto 0;
+}
+
+.Title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.5;
+  filter: drop-shadow(10px 10px 15px #000000c5);
+}
+.Description {
+  margin: 0;
+  font-size: 14px;
+  filter: drop-shadow(5px 5px 8px #000);
+}

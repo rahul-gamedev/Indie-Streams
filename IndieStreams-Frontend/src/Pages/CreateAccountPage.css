@@ -1,0 +1,78 @@
+.create-account-container {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create-account-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+label {
+  color: #8c8c8c;
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 6px;
+}
+
+input[type="email"],
+input[type="password"] {
+  background-color: #333333;
+  border: none;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 18px;
+  padding: 16px;
+  width: 100%;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+}
+
+.create-account-button {
+  background-color: #7431aa;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 16px;
+  width: 100%;
+}
+
+.create-account-button:hover {
+  opacity: 0.8;
+}
+
+.create-account-button:active {
+  opacity: 1;
+}
+
+.login-link {
+  font-size: 14px;
+  color: #666;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link a {
+  color: #894cbb;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

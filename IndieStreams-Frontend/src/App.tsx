@@ -1,138 +1,31 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router";
+import { BrowserRouter, useNavigate } from "react-router-dom";
+
 import "./App.css";
-import Banner from "./Components/Banner";
-import MovieCard from "./Components/MovieCard";
-import MovieRow from "./Components/MovieRow";
-import NavBar from "./Components/NavBar";
+
+//Pages
+import HomePage from "./Pages/HomePage";
+import CreateAccountPage from "./Pages/CreateAccountPage";
+import LoginPage from "./Pages/LoginPage";
+import VideoPlayerPage from "./Pages/VideoPlayerPage";
+import VideoUploadPage from "./Pages/VideoUploadPage";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar></NavBar>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/signup" element={<CreateAccountPage />} />
 
-      <Banner image={"https://source.unsplash.com/random/720×1280/?Movies"}>
-        <div className="content">
-          <h1 className="Title">Title</h1>
-          <p className="Description">This is the description....</p>
-        </div>
-      </Banner>
+          <Route path="/login" element={<LoginPage />} />
 
-      <MovieRow heading={"Popular"}>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-      </MovieRow>
-
-      <MovieRow heading={"Newly Released"}>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-        <MovieCard
-          poster={"https://source.unsplash.com/random/1280×720/?Movies"}
-        >
-          <></>
-        </MovieCard>
-      </MovieRow>
-    </div>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/upload" element={<VideoUploadPage />} />
+          {/* <Route path="/video" element={<VideoPlayerPage />} /> */}
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

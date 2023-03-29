@@ -1,4 +1,6 @@
 import React from "react";
+import { FaSearch } from "react-icons/fa";
+import { BsPersonCircle } from "react-icons/bs";
 import Logo from "../assets/is-logo.png";
 import "./NavBar.css";
 
@@ -13,9 +15,20 @@ const NavBar = () => {
       </div>
 
       <ul>
+        <li>
+          <input
+            type="text"
+            name="text"
+            className="input"
+            placeholder="Search Contents..."
+          ></input>
+          <FaSearch className="icons" />
+        </li>
         <li>Home</li>
-        <li>Movies</li>
-        <li>Profile</li>
+        <li>Categories</li>
+        <li>
+          <BsPersonCircle className="icons" />
+        </li>
       </ul>
     </div>
   );

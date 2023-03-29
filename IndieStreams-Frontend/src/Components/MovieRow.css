@@ -1,15 +1,24 @@
 .heading {
+  position: absolute;
+  top: 25px;
   font-size: 24px;
   margin: 0px 0;
 }
 .Row {
-  margin: 8px 0;
+  margin: 12px 0;
+  position: relative;
+  height: 230px;
   width: 100%;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .Row ul {
-  height: 40vh;
-
+  position: absolute;
+  top: 60px;
+  height: 200px;
+  width: 100%;
   padding: 0;
   margin: 0;
 
@@ -17,7 +26,7 @@
   flex-direction: row;
   justify-content: flex-start;
 
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: scroll;
   scroll-behavior: smooth;
 }

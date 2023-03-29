@@ -6,7 +6,8 @@
   display: flex;
 
   justify-content: space-between;
-
+  vertical-align: middle;
+  align-items: center;
   user-select: none;
 }
 
@@ -28,11 +29,49 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
   list-style: none;
 }
 ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional: horizontally center the content */
+
+  height: 28px;
   font-size: 12px;
-  margin-left: 48px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 32px;
   text-decoration: none;
   cursor: pointer;
+  transition: all ease 300ms;
+  color: white;
+}
+ul li :hover {
+  color: rgba(255, 255, 255, 0.685);
+}
+
+.icons {
+  font-size: 14px;
+}
+
+.input {
+  height: 32px;
+  font-size: 12px;
+  border: 2px solid #f5f5f58f;
+  border-radius: 5px;
+  padding: 10px 25px;
+  /* background: transparent; */
+  max-width: 190px;
+  margin-right: 16px;
+}
+
+.input::placeholder {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.input:active {
+  box-shadow: 2px 2px 15px #7431aa inset;
 }

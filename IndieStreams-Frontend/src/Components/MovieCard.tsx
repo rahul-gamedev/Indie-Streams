@@ -1,14 +1,22 @@
 import React, { ReactNode } from "react";
+import movieProps from "../MovieProps";
 import "./MovieCard.css";
 
-interface Props {
-  children: ReactNode;
-  poster: string;
-}
-
-const MovieCard = ({ children, poster }: Props) => {
+const MovieCard = ({
+  title,
+  description,
+  movieUrl,
+  children,
+  posterUrl,
+}: movieProps) => {
   return (
-    <div className="Card" style={{ backgroundImage: `url(${poster})` }}></div>
+    <div className="Card">
+      <img src={posterUrl} />
+      <div className="info">
+        <h3 className="Card-Title">{title}</h3>
+        <p className="Desc">{description}</p>
+      </div>
+    </div>
   );
 };
 

@@ -1,18 +1,22 @@
 import React, { ReactNode } from "react";
+import movieProps from "../MovieProps";
 import "./Banner.css";
 
-interface Props {
-  children: ReactNode;
-  image: string;
-}
-const Banner = ({ image, children }: Props) => {
+const Banner = ({
+  title,
+  description,
+  movieUrl,
+  children,
+  posterUrl,
+}: movieProps) => {
   return (
-    <div
-      className="Banner"
-      style={{
-        backgroundImage: `url(${"https://source.unsplash.com/random/720×1280/?Movies"})`,
-      }}
-    >
+    <div className="Banner">
+      <img src={posterUrl} />
+
+      <div className="content">
+        <h1 className="Title">{title}</h1>
+        <p className="Description">{description}</p>
+      </div>
       {children}
     </div>
   );

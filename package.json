@@ -1,4 +1,13 @@
 {
+  "scripts": {
+    "server": "cd Server && http-server",
+  "client": "cd IndieStreams-Frontend && npm run dev",
+  "backend": "cd IndieStreams-backend && npx nodemon index.js",
+  "sql":"mysql"
+  
+},
+
+
   "dependencies": {
     "mongodb": "^5.1.0"
   }

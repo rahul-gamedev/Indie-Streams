@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "./VideoUploadPage.css";
 import { TiTick } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 interface VideoFormData {
   title: string;
@@ -35,6 +36,8 @@ const notifyError = () =>
   });
 
 const VideoUploadPage = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<VideoFormData>({
     title: "",
     description: "",
@@ -75,7 +78,11 @@ const VideoUploadPage = () => {
       data.append("videoFile", formData.videoFile);
       data.append("posterFile", formData.posterFile);
     }
-    await axios.post("http://localhost:3000/upload", data);
+    await axios.post("http://localhost:3000/upload", data).then((res) => {
+      if (res.data == "200") {
+        navigate("/");
+      }
+    });
   };
 
   return (

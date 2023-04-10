@@ -44,22 +44,16 @@ app.post("/login", async (req, res) => {
   );
 });
 
-// app.post("/upload", async (req, res) => {
-//   const { title, description, videoFile, posterFile } = req.body;
-//   db.query(
-//     "INSERT INTO movies (title, description, video, poster) VALUES (?,?,?,?)",
-//     [title, description, videoFile, posterFile],
-//     (err, result) => {
-//       if (err) {
-//         if (err.errno == 1062) {
-//           res.send("1062");
-//         }
-//       } else {
-//         res.send("200");
-//       }
-//     }
-//   );
-// });
+app.post("/user", async (req, res) => {
+  const { email, password } = req.body;
+  db.query(
+    "SELECT * FROM users WHERE email = ? AND password = ?",
+    [email, password],
+    (error, results) => {
+      res.json(results);
+    }
+  );
+});
 
 app.post("/upload", (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -88,7 +82,7 @@ app.post("/upload", (req, res) => {
       title,
       description,
       `http://localhost:8080/movies/${title}-video.mp4`,
-      `http://localhost:/movies/${title}-poster.jpg`,
+      `http://localhost:8080/movies/${title}-poster.jpg`,
     ],
     (err, result) => {
       if (err) {
@@ -104,6 +98,16 @@ app.post("/upload", (req, res) => {
 
 app.get("/popular", (req, res) => {
   db.query("SELECT * FROM movies", (err, result) => {
+    res.json(result);
+  });
+});
+
+app.get("/movie/:id", (req, res) => {
+  const { id } = req.params;
+  db.query("SELECT * FROM movies WHERE (id) = (?)", [id], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
     res.json(result);
   });
 });

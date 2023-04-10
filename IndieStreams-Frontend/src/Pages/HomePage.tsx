@@ -15,12 +15,21 @@ type movie = {
   poster: string;
 };
 
+type user = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 function HomePage() {
+  const [user, setUser] = useState<user>();
+
   const navigate = useNavigate();
   const loggedIn = localStorage.getItem("loggedIn") == "true";
 
   useEffect(() => {
     loggedIn == true ? navigate("/") : navigate("/login");
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, [loggedIn]);
 
   const [popularMovies, setPopularMovies] = useState([]);
@@ -42,6 +51,7 @@ function HomePage() {
       <NavBar></NavBar>
       {bannerMovie && (
         <Banner
+          id={bannerMovie.id}
           title={bannerMovie.title}
           description={bannerMovie.description}
           movieUrl={bannerMovie.video}
@@ -53,14 +63,21 @@ function HomePage() {
       <MovieRow heading={"Popular"}>
         {popularMovies.map(
           ({ title, description, id, video, poster }: movie) => (
-            <MovieCard
-              key={id}
-              title={title}
-              description={description}
-              movieUrl={video}
-              posterUrl={poster}
-              children={undefined}
-            ></MovieCard>
+            <div
+              onClick={() => {
+                navigate(`/movie/${id}`);
+              }}
+            >
+              <MovieCard
+                key={id}
+                title={title}
+                description={description}
+                movieUrl={video}
+                posterUrl={poster}
+                id={id}
+                children={undefined}
+              ></MovieCard>
+            </div>
           )
         )}
       </MovieRow>

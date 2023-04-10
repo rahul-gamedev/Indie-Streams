@@ -51,6 +51,11 @@ function LoginPage() {
           notify();
         } else {
           localStorage.setItem("loggedIn", "true");
+          axios
+            .post("http://localhost:3000/user", { email, password })
+            .then((res) => {
+              localStorage.setItem("user", JSON.stringify(res.data[0]));
+            });
           navigate("/");
         }
       });

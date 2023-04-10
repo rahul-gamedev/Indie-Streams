@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 
@@ -10,8 +10,19 @@ import CreateAccountPage from "./Pages/CreateAccountPage";
 import LoginPage from "./Pages/LoginPage";
 import VideoPlayerPage from "./Pages/VideoPlayerPage";
 import VideoUploadPage from "./Pages/VideoUploadPage";
+import ProfilePage from "./Pages/ProfilePage";
+type user = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 function App() {
+  const [user, setUser] = useState<user>();
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
   return (
     <BrowserRouter>
       <div className="App">
@@ -21,8 +32,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 
           <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage currentUser={user} />} />
           <Route path="/upload" element={<VideoUploadPage />} />
-          {/* <Route path="/video" element={<VideoPlayerPage />} /> */}
+          <Route path="/movie/:id" element={<VideoPlayerPage />} />
         </Routes>
       </div>
     </BrowserRouter>

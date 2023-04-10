@@ -1,36 +1,4 @@
-.video-player-page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.video-player-container {
-  position: relative;
-  padding-top: 56.25%;
-}
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.video-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.video-details h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.video-details p {
-  font-size: 18px;
-  margin-bottom: 0;
+.video {
+  height: 60vh;
+  border: none;
 }

@@ -47,12 +47,51 @@ ul li {
   transition: all ease 300ms;
   color: white;
 }
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional: horizontally center the content */
+
+  height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 32px;
+  cursor: pointer;
+  transition: all ease 300ms;
+  color: black;
+  padding: 4px 12px;
+  background-color: white;
+
+  outline-width: 10px;
+
+  border-radius: 8px;
+  border-width: 5px;
+  border-color: blue;
+}
+.upload-btn:hover {
+  background-color: rgb(192, 192, 192);
+}
+
 ul li :hover {
-  color: rgba(255, 255, 255, 0.685);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .icons {
-  font-size: 14px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional: horizontally center the content */
+
+  height: 28px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 32px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all ease 300ms;
+  color: white;
 }
 
 .input {

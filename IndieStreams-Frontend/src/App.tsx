@@ -11,18 +11,21 @@ import LoginPage from "./Pages/LoginPage";
 import VideoPlayerPage from "./Pages/VideoPlayerPage";
 import VideoUploadPage from "./Pages/VideoUploadPage";
 import ProfilePage from "./Pages/ProfilePage";
+
 type user = {
-  name: string;
-  email: string;
-  password: string;
+  id: number | undefined;
+  name: string | null;
+  email: string | null;
+  password: string | null;
 };
 
 function App() {
   const [user, setUser] = useState<user>();
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("user")));
+    setUser(JSON.parse(localStorage.getItem("user") || "{}"));
   }, []);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -32,7 +35,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage currentUser={user} />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/upload" element={<VideoUploadPage />} />
           <Route path="/movie/:id" element={<VideoPlayerPage />} />
         </Routes>

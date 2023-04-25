@@ -1,0 +1,8 @@
+1.Install NodeJS
+packages:
+    nodemon
+    vitte
+    http-server
+
+2.MySql WorkBench
+3.start server

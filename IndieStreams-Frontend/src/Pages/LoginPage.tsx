@@ -24,7 +24,6 @@ interface LoginData {
 
 function LoginPage() {
   const navigate = useNavigate();
-  const loggedIn = localStorage.getItem("loggedIn") === "true";
 
   const [formData, setFormData] = useState<LoginData>({
     email: "",
@@ -62,8 +61,9 @@ function LoginPage() {
   };
 
   useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedIn") === "true";
     loggedIn == true ? navigate("/") : navigate("/login");
-  }, [loggedIn]);
+  }, []);
 
   return (
     <div className="login-container">

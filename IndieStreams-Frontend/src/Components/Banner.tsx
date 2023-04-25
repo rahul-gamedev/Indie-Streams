@@ -12,7 +12,6 @@ const Banner = ({
   return (
     <div className="Banner">
       <img src={posterUrl} />
-
       <div className="content">
         <h1 className="Title">{title}</h1>
         <p className="Description">{description}</p>

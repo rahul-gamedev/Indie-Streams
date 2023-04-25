@@ -1,0 +1,47 @@
+.container {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+  height: auto;
+  margin-bottom: 58px;
+}
+
+.Greeting {
+  margin: 58px auto;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional: horizontally center the content */
+
+  height: 28px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 32px;
+  cursor: pointer;
+  transition: all ease 300ms;
+  color: black;
+  padding: 6px 24px;
+  background-color: white;
+
+  outline-width: 10px;
+
+  border-radius: 8px;
+  border-width: 5px;
+  border-color: blue;
+}
+.logout-btn:hover {
+  background-color: rgb(192, 192, 192);
+}

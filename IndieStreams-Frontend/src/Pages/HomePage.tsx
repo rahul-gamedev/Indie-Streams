@@ -16,25 +16,22 @@ type movie = {
 };
 
 type user = {
+  id: number | undefined;
   name: string;
   email: string;
   password: string;
 };
 
 function HomePage() {
-  const [user, setUser] = useState<user>();
-
   const navigate = useNavigate();
+
   const loggedIn = localStorage.getItem("loggedIn") == "true";
 
   useEffect(() => {
     loggedIn == true ? navigate("/") : navigate("/login");
-    setUser(JSON.parse(localStorage.getItem("user")));
   }, [loggedIn]);
 
   const [popularMovies, setPopularMovies] = useState([]);
-  const [bannerMovie, setBannerMovie] = useState<movie>();
-
   useEffect(() => {
     axios.get("http://localhost:3000/popular").then((res) => {
       setPopularMovies(res.data);
@@ -42,6 +39,7 @@ function HomePage() {
     setBannerMovie(popularMovies[1]);
   }, []);
 
+  const [bannerMovie, setBannerMovie] = useState<movie>();
   useEffect(() => {
     setBannerMovie(popularMovies[1]);
   }, [popularMovies]);
@@ -60,27 +58,11 @@ function HomePage() {
         ></Banner>
       )}
 
-      <MovieRow heading={"Popular"}>
-        {popularMovies.map(
-          ({ title, description, id, video, poster }: movie) => (
-            <div
-              onClick={() => {
-                navigate(`/movie/${id}`);
-              }}
-            >
-              <MovieCard
-                key={id}
-                title={title}
-                description={description}
-                movieUrl={video}
-                posterUrl={poster}
-                id={id}
-                children={undefined}
-              ></MovieCard>
-            </div>
-          )
-        )}
-      </MovieRow>
+      <MovieRow
+        children={undefined}
+        heading={"Popular"}
+        collection={popularMovies}
+      ></MovieRow>
     </div>
   );
 }

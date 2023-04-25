@@ -22,24 +22,28 @@ const NavBar = () => {
       </div>
 
       <ul>
-        <li>
-          <input
-            type="text"
-            name="text"
-            className="input"
-            placeholder="Search Contents..."
-          ></input>
-          <FaSearch className="icons" />
-        </li>
-        <li>Home</li>
-        <li>Categories</li>
         <li
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </li>
+        <li>Categories</li>
+        <a
+          className="upload-btn"
+          onClick={() => {
+            navigate("/upload");
+          }}
+        >
+          Upload
+        </a>
+        <BsPersonCircle
           onClick={() => {
             navigate("/profile");
           }}
-        >
-          <BsPersonCircle className="icons" />
-        </li>
+          className="icons"
+        />
       </ul>
     </div>
   );

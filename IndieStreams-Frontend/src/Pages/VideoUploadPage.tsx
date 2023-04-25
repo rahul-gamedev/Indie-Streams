@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "./VideoUploadPage.css";
 import { TiTick } from "react-icons/ti";
@@ -10,6 +10,7 @@ interface VideoFormData {
   description: string;
   videoFile: File | null;
   posterFile: File | null;
+  user: string | undefined;
 }
 
 const notify = () =>
@@ -35,7 +36,20 @@ const notifyError = () =>
     theme: "dark",
   });
 
+type user = {
+  id: number | undefined;
+  name: string | null;
+  email: string | null;
+  password: string | null;
+};
+
 const VideoUploadPage = () => {
+  const [user, setUser] = useState<user>();
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user") || "{}"));
+  }, []);
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<VideoFormData>({
@@ -43,6 +57,7 @@ const VideoUploadPage = () => {
     description: "",
     videoFile: null,
     posterFile: null,
+    user: "",
   });
 
   const handleInputChange = (
@@ -77,10 +92,17 @@ const VideoUploadPage = () => {
       data.append("description", formData.description);
       data.append("videoFile", formData.videoFile);
       data.append("posterFile", formData.posterFile);
+      data.append(
+        "user",
+        JSON.parse(localStorage.getItem("user") || "{}").email
+      );
     }
     await axios.post("http://localhost:3000/upload", data).then((res) => {
       if (res.data == "200") {
+        notify();
         navigate("/");
+      } else {
+        notifyError();
       }
     });
   };

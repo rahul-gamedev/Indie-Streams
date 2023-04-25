@@ -36,7 +36,7 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   db.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
+    "SELECT name FROM users WHERE email = ? AND password = ?",
     [email, password],
     (error, results) => {
       res.send(results.length > 0);
@@ -60,7 +60,7 @@ app.post("/upload", (req, res) => {
     return res.status(400).send("No files were uploaded.");
   }
 
-  const { title, description } = req.body;
+  const { title, description, user } = req.body;
 
   const video = req.files.videoFile;
   const poster = req.files.posterFile;
@@ -77,15 +77,17 @@ app.post("/upload", (req, res) => {
   });
 
   db.query(
-    "INSERT INTO movies (title, description, video, poster) VALUES (?,?,?,?)",
+    "INSERT INTO movies (title, description, video, poster, user) VALUES (?,?,?,?,?)",
     [
       title,
       description,
       `http://localhost:8080/movies/${title}-video.mp4`,
       `http://localhost:8080/movies/${title}-poster.jpg`,
+      user,
     ],
     (err, result) => {
       if (err) {
+        console.log(err);
         if (err.errno == 1062) {
           res.send("1062");
         }
@@ -98,6 +100,16 @@ app.post("/upload", (req, res) => {
 
 app.get("/popular", (req, res) => {
   db.query("SELECT * FROM movies", (err, result) => {
+    res.json(result);
+  });
+});
+
+app.get("/my-movies/:email", (req, res) => {
+  const { email } = req.params;
+  db.query("SELECT * FROM movies WHERE user = ?", [email], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
     res.json(result);
   });
 });
